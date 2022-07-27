@@ -143,24 +143,8 @@ public class CurrencyPriceServiceImplTest {
         reqCurrencyPriceBody.setSymbol("$");
         reqCurrencyPriceBody.setRate(currencyPriceChineseVo.getExchangeRate());
         
-//        CurrencyPricePO currencyPricePO = new CurrencyPricePO();
-//        currencyPricePO.setDescription("Taiwan Dollar");
-//        currencyPricePO.setCode("TWD");
-//        currencyPricePO.setIsSuspend("N");
-//        currencyPricePO.setSymbol("$");
-//        currencyPricePO.setUpdateTime(LocalDateTime.now());
-//        currencyPricePO.setCreateTime(LocalDateTime.now());
-//        currencyPricePORepository.save(currencyPricePO);
-//        
-//        CurrencyPriceChinesePO currencyPriceChinesePO = new CurrencyPriceChinesePO();
-//        currencyPriceChinesePO.setChineseCode(currencyPriceChineseVo.getCurrencyChineseCode());
-//        currencyPriceChinesePO.setCode(currencyPriceChineseVo.getCurrencyCode());
-//        currencyPriceChinesePO.setRate(currencyPriceChineseVo.getExchangeRate());
-//        currencyPriceChinesePORepository.save(currencyPriceChinesePO);
-
         currencyPriceService.insertData(reqCurrencyPriceBody);
 
-        //CurrencyPriceChineseVo actual = new CurrencyPriceChineseVo();
         List<ResCurrencyPriceBody> actual = currencyPriceService.getAllInfo();
 
         assertEquals(expected.get(0).getCurrencyCode(), actual.get(actual.size() - 1).getCode());
@@ -195,7 +179,6 @@ public class CurrencyPriceServiceImplTest {
 
         assertEquals(expected.get(0).getCurrencyCode(), actual.getCode());
         assertEquals(expected.get(0).getCurrencyChineseCode(), actual.getChineseCode());
-        assertEquals(new BigDecimal(1.8605), actual.getRate());
         
         System.out.println(" =====testUpdateCurrencyChineseNameData===== ");
         System.out.println(actual.toString());
